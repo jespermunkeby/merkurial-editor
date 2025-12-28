@@ -1,2 +1,2 @@
-export * from "./versioned"
+export * from "./versionedNode"
 export * from "./project"
