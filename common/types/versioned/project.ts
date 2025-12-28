@@ -1,6 +1,12 @@
-import { CID } from "./types"
+import { Branch } from "../branch"
+import { CID } from "../cid"
+import { Commit } from "../commit"
 
-export type Root = CID<Directory>[]
+export type Project = {
+  root: CID<Directory>[],
+  defaultBranch: string,
+  branches: Branch[]
+}
 
 export type Directory = {
   type: "folder"
@@ -25,7 +31,6 @@ export type BlockNode =
   | CodeBlock
   | BlockQuote
   | HorizontalRule
-  | Reuse
 
 export type Heading = {
   type: "heading"
@@ -64,11 +69,6 @@ export type HorizontalRule = {
   type: "horizontal_rule"
 }
 
-export type Reuse = {
-  type: "reuse"
-  cid: CID<BlockNode>
-}
-
 // -----------------------------------------------------------------------------
 // Inline Nodes
 // -----------------------------------------------------------------------------
@@ -80,7 +80,6 @@ export type InlineNode =
   | CodeSpan
   | Link
   | Image
-  | Reference
 
 export type Text = {
   type: "text"
@@ -89,12 +88,12 @@ export type Text = {
 
 export type Emphasis = {
   type: "emphasis"
-  content: InlineNode[]
+  content: CID<InlineNode>[]
 }
 
 export type Strong = {
   type: "strong"
-  content: InlineNode[]
+  content: CID<InlineNode>[]
 }
 
 export type CodeSpan = {
@@ -105,17 +104,11 @@ export type CodeSpan = {
 export type Link = {
   type: "link"
   href: string
-  content: InlineNode[]
+  content: CID<InlineNode>[]
 }
 
 export type Image = {
   type: "image"
   src: string
   alt: string
-}
-
-export type Reference = {
-  type: "cross_reference"
-  to: CID
-  content: InlineNode[]
 }
