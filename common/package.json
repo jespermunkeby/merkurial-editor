@@ -6,6 +6,8 @@
   "types": "index.ts",
   "exports": {
     ".": "./index.ts"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.0.1"
   }
 }
-
