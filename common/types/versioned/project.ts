@@ -1,12 +1,7 @@
 import { Branch } from "../branch"
 import { CID } from "../cid"
 
-export type Project = {
-  name: string
-  root: CID<Directory>[],
-  defaultBranch: string,
-  branches: Branch[]
-}
+export type VersionedRoot = CID<Directory>[]
 
 export type Directory = {
   type: "folder"

@@ -1,7 +1,7 @@
-import { BlockNode, Directory, Document, InlineNode, Project } from "./project";
+import { BlockNode, Directory, Document, InlineNode, VersionedRoot } from "./project";
 
 export type VersionedNode = 
-    | Project
+    | VersionedRoot
     | Directory
     | Document
     | BlockNode
