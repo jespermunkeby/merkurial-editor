@@ -1,88 +1,51 @@
 # Merkurial Editor
 
-A TypeScript monorepo with a React frontend, Express backend, and shared common types.
+A structured document editor built with React and TypeScript.
 
 ## Project Structure
 
 ```
 merkurial-editor/
-├── frontend/     # React + Vite frontend
-├── backend/      # Express API server
-└── common/       # Shared TypeScript types and utilities
+├── src/
+│   ├── App.tsx           # Main application component
+│   ├── model.ts          # Application state types
+│   ├── version_control/  # Content-addressed types for version control
+│   │   ├── immutable/    # Immutable content types (commits, grammar nodes)
+│   │   └── mutable/      # Mutable state types (branches, projects, users)
+│   └── grammar_views/    # UI components for grammar nodes
+├── index.html
+├── vite.config.ts
+└── tsconfig.json
 ```
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or later)
-- [pnpm](https://pnpm.io/) (v8 or later)
-
-Install pnpm if you haven't:
-
-```bash
-npm install -g pnpm
-```
 
 ## Getting Started
 
 ### 1. Install dependencies
 
-From the root of the project:
+```bash
+npm install
+```
+
+### 2. Start development server
 
 ```bash
-pnpm install
+npm run dev
 ```
 
-This installs dependencies for all packages (frontend, backend, common).
+The app will be available at http://localhost:5173
 
-### 2. Start development servers
-
-Run both frontend and backend:
+### 3. Build for production
 
 ```bash
-pnpm dev
+npm run build
 ```
 
-Or run them separately:
+### 4. Preview production build
 
 ```bash
-# Terminal 1 - Backend (http://localhost:3001)
-pnpm dev:backend
-
-# Terminal 2 - Frontend (http://localhost:5173)
-pnpm dev:frontend
+npm run preview
 ```
-
-## Using Shared Types
-
-The `@merkurial/common` package contains shared TypeScript types. Import them in both frontend and backend:
-
-```typescript
-import { GrammarNode, BlockNode, InlineNode } from "@merkurial/common"
-```
-
-## Adding Dependencies
-
-```bash
-# Add to a specific package
-pnpm --filter frontend add <package>
-pnpm --filter backend add <package>
-pnpm --filter @merkurial/common add <package>
-
-# Add a dev dependency to the root (shared tooling)
-pnpm add -D -w <package>
-```
-
-## Workspaces
-
-This monorepo uses [pnpm workspaces](https://pnpm.io/workspaces). The configuration is in `pnpm-workspace.yaml`.
-
-Packages can depend on each other using the `workspace:*` protocol:
-
-```json
-{
-  "dependencies": {
-    "@merkurial/common": "workspace:*"
-  }
-}
-```
-

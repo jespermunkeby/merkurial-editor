@@ -1,1 +1,0 @@
-export type CID<T> = string & { __phantom: T }

@@ -1,5 +1,5 @@
-import { CID } from "./cid"
-import { Commit } from "./commit"
+import { CID } from "../cid"
+import { Commit } from "../immutable/commit"
 
 export type Branch = {
     uuid: string

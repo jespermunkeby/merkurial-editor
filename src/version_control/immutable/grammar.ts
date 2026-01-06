@@ -1,7 +1,9 @@
-import { Branch } from "../branch"
 import { CID } from "../cid"
 
-export type VersionedRoot = CID<Directory>[]
+export type GrammarRoot = {
+  type: "grammar_root"
+  content: CID<Directory>[]
+}
 
 export type Directory = {
   type: "folder"
