@@ -4,6 +4,7 @@ import { GrammarRoot } from "./immutable/grammar";
 import { Branch } from "./mutable/branch"
 import { ProjectRoot } from "./mutable/projectRoot"
 import { v4 as uuidv4 } from 'uuid';
+import { Path } from "./path";
 
 
 class KVStore {
@@ -77,11 +78,11 @@ class VersionControl {
         //put changes in working state into store, then clear working state
     }
 
-    public get<T>(path:???, value: T) {
+    public get<T>(path:Path<T>) : T {
 
     }
 
-    public set<T>(path:???, value: T) {
+    public set<T>(path:Path<T>, value: T) {
         
     }
 
