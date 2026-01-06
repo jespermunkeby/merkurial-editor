@@ -13,6 +13,8 @@ export type Directory = {
 
 export type Document = {
   type: "document"
+  name?: string
+  createdAt: string  // ISO timestamp - ensures unique CID for each document
   content: CID<BlockNode>[]
 }
 

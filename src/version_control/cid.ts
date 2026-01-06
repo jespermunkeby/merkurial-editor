@@ -7,7 +7,7 @@ import { sha256 } from "@noble/hashes/sha2.js"
 
 export type CID<T> = string & { __phantom: T }
 
-type CIDable = 
+export type CIDable = 
 | GrammarRoot 
 | Commit 
 | Directory 

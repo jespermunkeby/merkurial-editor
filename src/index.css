@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +15,8 @@
   --accent: #6366f1;
   --accent-glow: rgba(99, 102, 241, 0.3);
   --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
   --font-sans: "Outfit", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
@@ -29,5 +33,87 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Focus styles */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Button hover states */
+button:not(:disabled):hover {
+  filter: brightness(1.1);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Branch creation animation */
+@keyframes branchSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes nodeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.branch-indicator-new {
+  animation: branchSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* DAG node animations */
+.dag-node {
+  animation: nodeAppear 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Smooth transitions for title input */
+input[type="text"]:focus {
+  border-color: var(--accent) !important;
 }
 
